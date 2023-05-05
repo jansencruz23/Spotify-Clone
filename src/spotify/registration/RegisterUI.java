@@ -4,10 +4,13 @@ import spotify.io.Register;
 import components.*;
 import java.awt.Color;
 import helper.fonts.*;
+import javax.swing.JOptionPane;
 import spotify.login.LoginUI;
 
 public class RegisterUI extends javax.swing.JFrame {
 
+    Register register = new Register();
+    
     public RegisterUI() {
         
         initComponents();
@@ -19,18 +22,18 @@ public class RegisterUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new CirclePanel(20, new Color(20, 20, 20));
-        jTextField1 = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtConfirmPW = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         lblLogin = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnRegister = new RoundedButton("Sign up");
-        jTextField3 = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         lblBg = new javax.swing.JLabel();
 
@@ -42,13 +45,13 @@ public class RegisterUI extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField1.setFont(Fonts.getSpotifyMediumFont(13f)
+        txtUsername.setBackground(new java.awt.Color(51, 51, 51));
+        txtUsername.setFont(Fonts.getSpotifyMediumFont(13f)
         );
-        jTextField1.setForeground(new java.awt.Color(184, 184, 184));
-        jTextField1.setText("Enter your username.");
-        jTextField1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 15, 0, 0));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 330, 40));
+        txtUsername.setForeground(new java.awt.Color(184, 184, 184));
+        txtUsername.setText("Enter your username.");
+        txtUsername.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 15, 0, 0));
+        jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 330, 40));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo w name.png"))); // NOI18N
@@ -84,13 +87,13 @@ public class RegisterUI extends javax.swing.JFrame {
         jLabel5.setText("Sign up with your username");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 490, -1));
 
-        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField2.setFont(Fonts.getSpotifyMediumFont(13f)
+        txtConfirmPW.setBackground(new java.awt.Color(51, 51, 51));
+        txtConfirmPW.setFont(Fonts.getSpotifyMediumFont(13f)
         );
-        jTextField2.setForeground(new java.awt.Color(184, 184, 184));
-        jTextField2.setText("Confirm your password.");
-        jTextField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 15, 0, 0));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 330, 40));
+        txtConfirmPW.setForeground(new java.awt.Color(184, 184, 184));
+        txtConfirmPW.setText("Confirm your password.");
+        txtConfirmPW.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 15, 0, 0));
+        jPanel1.add(txtConfirmPW, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 330, 40));
 
         jLabel6.setFont(Fonts.getSpotifyMediumFont(13f));
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,15 +127,20 @@ public class RegisterUI extends javax.swing.JFrame {
         btnRegister.setText("Sign up");
         btnRegister.setBorder(null);
         btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 475, 110, 45));
 
-        jTextField3.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField3.setFont(Fonts.getSpotifyMediumFont(13f)
+        txtPassword.setBackground(new java.awt.Color(51, 51, 51));
+        txtPassword.setFont(Fonts.getSpotifyMediumFont(13f)
         );
-        jTextField3.setForeground(new java.awt.Color(184, 184, 184));
-        jTextField3.setText("Create a password.");
-        jTextField3.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 15, 0, 0));
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 330, 40));
+        txtPassword.setForeground(new java.awt.Color(184, 184, 184));
+        txtPassword.setText("Create a password.");
+        txtPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 15, 0, 0));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 330, 40));
 
         jLabel9.setFont(Fonts.getSpotifyMediumFont(13f));
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,11 +156,34 @@ public class RegisterUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean confirmPassword() {
+        
+        if (txtPassword.getText().equals(txtConfirmPW.getText()))
+            return true;
+        
+        return false;
+    }
+    
     private void lblLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoginMouseClicked
         
         this.dispose();
         new LoginUI().setVisible(true);
     }//GEN-LAST:event_lblLoginMouseClicked
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        
+        if (register.isUserExisting(txtUsername.getText())) 
+            JOptionPane.showMessageDialog(null, "Username already exists");
+        else
+            if (confirmPassword()) {
+                register.registerUser(txtUsername.getText(), txtPassword.getText());
+                
+                this.dispose();
+                new LoginUI().setVisible(true);
+            }
+        else
+            JOptionPane.showMessageDialog(null, "Passwords do not match");
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
@@ -165,10 +196,10 @@ public class RegisterUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblBg;
     private javax.swing.JLabel lblLogin;
+    private javax.swing.JTextField txtConfirmPW;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
