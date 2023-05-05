@@ -10,8 +10,9 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 
-class RoundedButton extends Component {
+public class RoundedButton extends JButton{
 
     ActionListener actionListener;     // Post action events to listeners
     String label;                      // The Button's text
@@ -66,11 +67,11 @@ class RoundedButton extends Component {
         } else {
             g.setColor(getBackground());
         }
-        g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
+        g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 50, 50);
 
         // draw the perimeter of the button
         g.setColor(getBackground().darker().darker().darker());
-        g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
+        g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 50, 50);
 
         // draw the label centered in the button
         Font f = getFont();
