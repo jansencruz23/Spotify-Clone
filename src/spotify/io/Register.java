@@ -32,11 +32,7 @@ public class Register {
             BufferedReader reader = new BufferedReader(fileReader);
             
             while (reader.ready()) {
-                String line = reader.readLine();
-                String[] userData = line.split("\\s+");
-                
-                System.out.println(userData[0]);
-                System.out.println(userData[1]);
+                String[] userData = reader.readLine().split("\\s+");
                 
                 if (userData[0].equals(username)) {
                     reader.close();

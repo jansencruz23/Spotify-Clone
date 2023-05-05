@@ -11,9 +11,13 @@ public class RegisterUI extends javax.swing.JFrame {
 
     Register register = new Register();
     
+    String username;
+    String password;
+    String confirmPW;
+    
     public RegisterUI() {
         
-        initComponents();
+        initComponents();        
         setLocationRelativeTo(null);
     }
 
@@ -158,7 +162,7 @@ public class RegisterUI extends javax.swing.JFrame {
 
     private boolean confirmPassword() {
         
-        if (txtPassword.getText().equals(txtConfirmPW.getText()))
+        if (password.equals(confirmPW))
             return true;
         
         return false;
@@ -171,18 +175,28 @@ public class RegisterUI extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLoginMouseClicked
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+                
+        username = txtUsername.getText();
+        password = txtPassword.getText();
+        confirmPW = txtConfirmPW.getText();
         
-        if (register.isUserExisting(txtUsername.getText())) 
+        if (username.contains(" ") || password.contains(" "))
+             JOptionPane.showMessageDialog(null, "Username cannot contain spaces");
+        
+        else if (register.isUserExisting(username))
             JOptionPane.showMessageDialog(null, "Username already exists");
-        else
+        
+        else {
+            
             if (confirmPassword()) {
-                register.registerUser(txtUsername.getText(), txtPassword.getText());
+                register.registerUser(username, password);
                 
                 this.dispose();
                 new LoginUI().setVisible(true);
             }
-        else
-            JOptionPane.showMessageDialog(null, "Passwords do not match");
+            else
+                JOptionPane.showMessageDialog(null, "Passwords do not match");
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
