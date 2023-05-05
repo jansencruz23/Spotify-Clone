@@ -4,6 +4,7 @@ import spotify.io.Register;
 import components.*;
 import java.awt.Color;
 import helper.fonts.*;
+import spotify.registration.RegisterUI;
 
 public class LoginUI extends javax.swing.JFrame {
 
@@ -28,7 +29,7 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblRegister = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnLogin = new RoundedButton("Log in");
         lblBg = new javax.swing.JLabel();
@@ -74,7 +75,7 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Username");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 400, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 250, 400, -1));
 
         jLabel5.setFont(Fonts.getSpotifyMediumFont(13f)
         );
@@ -95,14 +96,19 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Password");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 400, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 330, 400, -1));
 
-        jLabel7.setFont(Fonts.getSpotifyBoldFont(13)
+        lblRegister.setFont(Fonts.getSpotifyBoldFont(13)
         );
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Sign up free");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 90, -1));
+        lblRegister.setForeground(new java.awt.Color(255, 255, 255));
+        lblRegister.setText("Sign up free");
+        lblRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegisterMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 90, -1));
 
         jLabel8.setFont(Fonts.getSpotifyMediumFont(13)
         );
@@ -128,6 +134,12 @@ public class LoginUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegisterMouseClicked
+        
+        this.dispose();
+        new RegisterUI().setVisible(true);
+    }//GEN-LAST:event_lblRegisterMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
@@ -137,11 +149,11 @@ public class LoginUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblBg;
+    private javax.swing.JLabel lblRegister;
     // End of variables declaration//GEN-END:variables
 }
