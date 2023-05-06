@@ -1,4 +1,4 @@
-package spotify.io;
+package spotify.authio;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,10 +1,23 @@
 package spotify.main;
 
+import helper.fonts.*;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import spotify.playlists.*;
+import components.*;
+
 public class SpotifyUI extends javax.swing.JFrame {
 
+    Playlists playlists = new Playlists();
+    ArrayList<PlaylistUI> playlist;
+    
     public SpotifyUI() {
         
+        playlist = playlists.getPlaylists();
+        
         initComponents();
+        initPlaylists();
+        displayPlaylists();
         setLocationRelativeTo(null);
     }
     
@@ -19,6 +32,9 @@ public class SpotifyUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        lblGreet = new javax.swing.JLabel();
+        panelTopPL = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,28 +85,43 @@ public class SpotifyUI extends javax.swing.JFrame {
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setToolTipText("");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+        jPanel4.setBackground(new java.awt.Color(18, 18, 18));
+
+        jPanel5.setBackground(new java.awt.Color(18, 18, 18));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(18, 18, 18));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1));
+        jPanel6.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblGreet.setFont(Fonts.getSpotifyBoldFont(30f)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
-        );
+        lblGreet.setForeground(new java.awt.Color(255, 255, 255));
+        lblGreet.setText("Good afternoon");
+        lblGreet.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        lblGreet.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        jPanel6.add(lblGreet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 16, 329, 45));
+
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 60));
+
+        panelTopPL.setBackground(new java.awt.Color(18, 18, 18));
+        panelTopPL.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 10));
+        jPanel5.add(panelTopPL, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, 770, 240));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 48, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 248, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 210, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel4);
@@ -100,7 +131,20 @@ public class SpotifyUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initPlaylists() {
+        
+        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl1.png")), "Hot Hits Philippines"));
+        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl2.png")), "This is Taylor Swift"));
+        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl3.png")), "Chillax Ka Muna!"));
+        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl4.png")), "Liked Songs"));
+        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl5.png")), "Today's Top Hits"));
+        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl6.png")), "Mang Kanor"));
+    }
     
+    private void displayPlaylists() {
+        
+        playlist.forEach(p -> panelTopPL.add(p));
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
@@ -108,7 +152,10 @@ public class SpotifyUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblGreet;
+    private javax.swing.JPanel panelTopPL;
     // End of variables declaration//GEN-END:variables
 }

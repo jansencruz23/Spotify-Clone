@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/User/Jansen/Self Study/2023 - 05 - MAY/Java Ant/Spotify/jl-1.0.1.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="dist/lib/AbsoluteLayout.jar"/>
+	<classpathentry kind="lib" path="dist/Spotify.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

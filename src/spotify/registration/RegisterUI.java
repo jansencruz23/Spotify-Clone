@@ -1,6 +1,6 @@
 package spotify.registration;
 
-import spotify.io.Register;
+import spotify.authio.Register;
 import components.*;
 import java.awt.Color;
 import helper.fonts.*;

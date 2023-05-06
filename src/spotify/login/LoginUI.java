@@ -1,6 +1,6 @@
 package spotify.login;
 
-import spotify.io.*;
+import spotify.authio.Login;
 import components.*;
 import java.awt.Color;
 import helper.fonts.*;
