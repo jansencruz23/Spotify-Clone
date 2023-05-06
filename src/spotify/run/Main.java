@@ -1,6 +1,7 @@
-package spotify.main;
+package spotify.run;
 
 import spotify.login.LoginUI;
+import spotify.main.SpotifyUI;
 
 public class Main {
     
@@ -32,7 +33,7 @@ public class Main {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginUI().setVisible(true);
+                new SpotifyUI().setVisible(true);
             }
         });
     }
