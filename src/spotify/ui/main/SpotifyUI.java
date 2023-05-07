@@ -137,9 +137,9 @@ public class SpotifyUI extends javax.swing.JFrame {
     private void initPlaylists() {
         
         Playlist p1 = new Playlist("Top Hits Philippines", new ImageIcon(getClass().getResource("/img/pl1.png")));
-        p1.addToPlaylist(new Song(new File("/songs/song.mp3"), "panaginip", "iluna", 500, new ImageIcon(getClass().getResource("/img/s1.png"))));
-        p1.addToPlaylist(new Song(new File("/songs/song.mp3"), "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png"))));
-                p1.addToPlaylist(new Song(new File("/songs/song.mp3"), "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png"))));
+        p1.addToPlaylist(new Song(new File("songs/song.mp3"), "panaginip", "iluna", 500, new ImageIcon(getClass().getResource("/img/s1.png"))));
+        p1.addToPlaylist(new Song(new File("songs/song.mp3"), "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png"))));
+                p1.addToPlaylist(new Song(new File("songs/song.mp3"), "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png"))));
                 
         playlistCards.add(new PlaylistCardUI(p1, this));
         playlistCards.add(new PlaylistCardUI(new Playlist("This is Taylor Swift", new ImageIcon(getClass().getResource("/img/pl2.png"))), this));

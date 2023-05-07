@@ -5,7 +5,11 @@ import spotify.songs.Song;
 
 public class SongUI extends javax.swing.JPanel {
     
+    private Song song;
+    
     public SongUI(Song song) {
+        
+        this.song = song;
         
         initComponents();
         lblIcon.setIcon(song.getIcon());
@@ -23,9 +27,15 @@ public class SongUI extends javax.swing.JPanel {
         lblArtist = new javax.swing.JLabel();
         lblDuration = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(153, 153, 153));
         setOpaque(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(Fonts.getSpotifyMediumFont(14)
@@ -55,10 +65,29 @@ public class SongUI extends javax.swing.JPanel {
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setText("Uhaw (Tayong Lahat)");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 210, -1));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        
+        song.playSong();
+    }//GEN-LAST:event_formMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        song.stopMusic();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblArtist;
     private javax.swing.JLabel lblDuration;

@@ -9,6 +9,8 @@ import javazoom.jl.player.Player;
 
 public class Song {
     
+    static Thread thread;
+    
     private int id;
     private File file;
     private String title;
@@ -23,6 +25,8 @@ public class Song {
         this.artist = artist;
         this.duration = duration;
         this.icon = icon;
+        
+        initThread();
     }
     
     public File getFile() {
@@ -50,20 +54,33 @@ public class Song {
         return icon;
     }
     
+    public void stopMusic() {
+        
+        thread.stop();
+        initThread();
+    }
+    
+    private void initThread() {
+        thread = new Thread(() -> {
+            
+            try {
+
+                FileInputStream fileInputStream = new FileInputStream(file);
+                Player player = new Player(fileInputStream);
+                System.out.println(title + " is playing...");
+                player.play();
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } 
+            catch (JavaLayerException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+    
     public void playSong() {
         
-        try {
-            
-            FileInputStream fileInputStream = new FileInputStream(file);
-            Player player = new Player(fileInputStream);
-            System.out.println(title + " is playing...");
-            player.play();
-        } 
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } 
-        catch (JavaLayerException e) {
-            e.printStackTrace();
-        }
+        thread.start();           
     }
 }
