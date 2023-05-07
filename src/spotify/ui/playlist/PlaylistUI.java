@@ -4,6 +4,7 @@ import helper.fonts.*;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import components.*;
+import java.awt.Dimension;
 import spotify.playlists.*;
 import spotify.songs.Song;
 import spotify.ui.song.SongUI;
@@ -29,13 +30,14 @@ public class PlaylistUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jPanel4 = new javax.swing.JPanel();
+        panelMain = new javax.swing.JPanel();
         panelHeader = new javax.swing.JPanel();
         lblIcon = new javax.swing.JLabel();
         lblPlaylistTitle = new javax.swing.JLabel();
@@ -87,8 +89,8 @@ public class PlaylistUI extends javax.swing.JFrame {
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setToolTipText("");
 
-        jPanel4.setBackground(new java.awt.Color(18, 18, 18));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelMain.setBackground(new java.awt.Color(18, 18, 18));
+        panelMain.setLayout(new java.awt.GridBagLayout());
 
         panelHeader.setBackground(new java.awt.Color(18, 18, 18));
         panelHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,9 +113,17 @@ public class PlaylistUI extends javax.swing.JFrame {
         lblInfo.setText("Username");
         panelHeader.add(lblInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 160, -1));
 
-        jPanel4.add(panelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 767, 318));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 47;
+        gridBagConstraints.ipady = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        panelMain.add(panelHeader, gridBagConstraints);
 
         panelBody.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelBodyHeader.setBackground(new java.awt.Color(18, 18, 18));
 
         javax.swing.GroupLayout panelBodyHeaderLayout = new javax.swing.GroupLayout(panelBodyHeader);
         panelBodyHeader.setLayout(panelBodyHeaderLayout);
@@ -128,12 +138,20 @@ public class PlaylistUI extends javax.swing.JFrame {
 
         panelBody.add(panelBodyHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        panelSongs.setLayout(new java.awt.GridLayout(0, 1));
-        panelBody.add(panelSongs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 136, 770, 70));
+        panelSongs.setBackground(new java.awt.Color(18, 18, 18));
+        panelSongs.setPreferredSize(new java.awt.Dimension(0, 70));
+        panelSongs.setLayout(new java.awt.GridLayout(0, 1, 0, 3));
+        panelBody.add(panelSongs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 136, 770, -1));
 
-        jPanel4.add(panelBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 324, 767, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = -3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
+        panelMain.add(panelBody, gridBagConstraints);
 
-        jScrollPane2.setViewportView(jPanel4);
+        jScrollPane2.setViewportView(panelMain);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,7 +202,13 @@ public class PlaylistUI extends javax.swing.JFrame {
     
     private void displaySongs() {
         
-        songsUi.forEach(s -> panelSongs.add(s));
+        songsUi.forEach(s -> {
+            panelSongs.setPreferredSize(new Dimension(panelSongs.getWidth(), panelSongs.getHeight()));
+            panelSongs.setSize(panelSongs.getWidth(), panelSongs.getHeight() + 56);
+            
+            panelSongs.add(s);
+                
+        });
     }
     
     
@@ -194,7 +218,6 @@ public class PlaylistUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblIcon;
@@ -203,6 +226,7 @@ public class PlaylistUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelBody;
     private javax.swing.JPanel panelBodyHeader;
     private javax.swing.JPanel panelHeader;
+    private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelSongs;
     // End of variables declaration//GEN-END:variables
 }

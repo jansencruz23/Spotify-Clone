@@ -10,6 +10,10 @@ public class PlaylistCardUI extends CirclePanel {
     
     private Playlist playlist;
     private SpotifyUI main;
+    
+    public PlaylistCardUI() {
+        super(10);
+    }
 
     public PlaylistCardUI(Playlist playlist, SpotifyUI main) {
         super(10, new Color(46,42,44));

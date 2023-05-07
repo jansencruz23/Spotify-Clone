@@ -24,9 +24,13 @@ public class SongUI extends javax.swing.JPanel {
         lblDuration = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 0));
+        setBackground(new java.awt.Color(153, 153, 153));
+        setOpaque(false);
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(Fonts.getSpotifyMediumFont(14)
+        );
+        jLabel1.setForeground(new java.awt.Color(153, 167, 167));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("1");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 33, 56));
@@ -36,13 +40,13 @@ public class SongUI extends javax.swing.JPanel {
 
         lblArtist.setFont(Fonts.getSpotifyMediumFont(13f)
         );
-        lblArtist.setForeground(new java.awt.Color(255, 255, 255));
+        lblArtist.setForeground(new java.awt.Color(153, 167, 167));
         lblArtist.setText("Dilaw");
         add(lblArtist, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 210, -1));
 
         lblDuration.setFont(Fonts.getSpotifyMediumFont(13f)
         );
-        lblDuration.setForeground(new java.awt.Color(255, 255, 255));
+        lblDuration.setForeground(new java.awt.Color(153, 167, 167));
         lblDuration.setText("4:01");
         add(lblDuration, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 210, -1));
 
