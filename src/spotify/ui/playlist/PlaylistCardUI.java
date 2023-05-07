@@ -1,19 +1,26 @@
-package spotify.playlists;
+package spotify.ui.playlist;
 
 import components.CirclePanel;
 import helper.fonts.Fonts;
 import java.awt.Color;
-import javax.swing.ImageIcon;
+import spotify.playlists.Playlist;
+import spotify.ui.main.SpotifyUI;
 
-public class PlaylistUI extends CirclePanel {
+public class PlaylistCardUI extends CirclePanel {
+    
+    private Playlist playlist;
+    private SpotifyUI main;
 
-    public PlaylistUI(ImageIcon icon, String title) {
-                
+    public PlaylistCardUI(Playlist playlist, SpotifyUI main) {
         super(10, new Color(46,42,44));
+        
+        this.playlist = playlist;
+        this.main = main;
+        
         initComponents();
         
-        lblIcon.setIcon(icon);
-        lblTitle.setText(title);
+        lblIcon.setIcon(playlist.getIcon());
+        lblTitle.setText(playlist.getTitle());
     }
 
     @SuppressWarnings("unchecked")
@@ -26,6 +33,11 @@ public class PlaylistUI extends CirclePanel {
         setBackground(new java.awt.Color(58, 42, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setOpaque(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pl1.png"))); // NOI18N
@@ -38,6 +50,12 @@ public class PlaylistUI extends CirclePanel {
         lblTitle.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 1));
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 10, 285, 50));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        
+        main.dispose();
+        new PlaylistUI(playlist).setVisible(true);
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

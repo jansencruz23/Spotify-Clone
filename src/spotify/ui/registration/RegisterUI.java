@@ -1,11 +1,11 @@
-package spotify.registration;
+package spotify.ui.registration;
 
 import spotify.authio.Register;
 import components.*;
 import java.awt.Color;
 import helper.fonts.*;
 import javax.swing.JOptionPane;
-import spotify.login.LoginUI;
+import spotify.ui.login.LoginUI;
 
 public class RegisterUI extends javax.swing.JFrame {
 

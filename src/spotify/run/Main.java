@@ -1,7 +1,7 @@
 package spotify.run;
 
-import spotify.login.LoginUI;
-import spotify.main.SpotifyUI;
+import spotify.ui.login.LoginUI;
+import spotify.ui.main.SpotifyUI;
 
 public class Main {
     

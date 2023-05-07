@@ -1,5 +1,6 @@
-package spotify.main;
+package spotify.ui.main;
 
+import spotify.ui.playlist.PlaylistCardUI;
 import helper.fonts.*;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -9,11 +10,11 @@ import components.*;
 public class SpotifyUI extends javax.swing.JFrame {
 
     Playlists playlists = new Playlists();
-    ArrayList<PlaylistUI> playlist;
+    ArrayList<PlaylistCardUI> playlistCards;
     
     public SpotifyUI() {
         
-        playlist = playlists.getPlaylists();
+        playlistCards = playlists.getPlaylistCards();
         
         initComponents();
         initPlaylists();
@@ -106,8 +107,8 @@ public class SpotifyUI extends javax.swing.JFrame {
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 60));
 
         panelTopPL.setBackground(new java.awt.Color(18, 18, 18));
-        panelTopPL.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 10));
-        jPanel5.add(panelTopPL, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, 770, 240));
+        panelTopPL.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 10));
+        jPanel5.add(panelTopPL, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 760, 240));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -133,17 +134,17 @@ public class SpotifyUI extends javax.swing.JFrame {
 
     private void initPlaylists() {
         
-        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl1.png")), "Hot Hits Philippines"));
-        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl2.png")), "This is Taylor Swift"));
-        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl3.png")), "Chillax Ka Muna!"));
-        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl4.png")), "Liked Songs"));
-        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl5.png")), "Today's Top Hits"));
-        playlist.add(new PlaylistUI(new ImageIcon(getClass().getResource("/img/pl6.png")), "Mang Kanor"));
+        playlistCards.add(new PlaylistCardUI(new Playlist("Top Hits Philippines", new ImageIcon(getClass().getResource("/img/pl1.png"))), this));
+        playlistCards.add(new PlaylistCardUI(new Playlist("This is Taylor Swift", new ImageIcon(getClass().getResource("/img/pl2.png"))), this));
+        playlistCards.add(new PlaylistCardUI(new Playlist("Chillax Ka Muna!", new ImageIcon(getClass().getResource("/img/pl3.png"))), this));
+        playlistCards.add(new PlaylistCardUI(new Playlist("Liked Songs", new ImageIcon(getClass().getResource("/img/pl4.png"))), this));
+        playlistCards.add(new PlaylistCardUI(new Playlist("Today's Top Hits", new ImageIcon(getClass().getResource("/img/pl5.png"))), this));
+        playlistCards.add(new PlaylistCardUI(new Playlist("Mang Kanor", new ImageIcon(getClass().getResource("/img/pl6.png"))), this));
     }
     
     private void displayPlaylists() {
         
-        playlist.forEach(p -> panelTopPL.add(p));
+        playlistCards.forEach(p -> panelTopPL.add(p));
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

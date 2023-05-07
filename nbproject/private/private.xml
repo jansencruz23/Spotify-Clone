@@ -5,10 +5,18 @@
         <group>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/main/Spotify.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/registration/RegisterUI.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/io/Register.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/songs/Song.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/playlists/Playlists.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/authio/Register.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/components/WrapLayout.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/run/Main.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/songs/Songs.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/playlists/PlaylistUI.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/components/CirclePanel.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/playlists/Playlist.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/login/LoginUI.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/io/Login.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/main/SpotifyUI.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/spotify/authio/Login.java</file>
         </group>
     </open-files>
 </project-private>

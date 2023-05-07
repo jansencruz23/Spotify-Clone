@@ -1,19 +1,21 @@
 package spotify.playlists;
 
+import spotify.ui.playlist.PlaylistCardUI;
 import java.io.Serializable;
 import java.util.ArrayList;
+import spotify.songs.Song;
 
 public class Playlists implements Serializable {
     
-    private ArrayList<PlaylistUI> playlists = new ArrayList<>();
+    private ArrayList<PlaylistCardUI> playlistsCards = new ArrayList<>();
     
-    public ArrayList<PlaylistUI> getPlaylists() {
+    public ArrayList<PlaylistCardUI> getPlaylistCards() {
         
-        return playlists;
+        return playlistsCards;
     }
     
-    public void addToPlaylists(PlaylistUI playlist) {
+    public void addToPlaylistCards(PlaylistCardUI playlist) {
         
-        playlists.add(playlist);
+        playlistsCards.add(playlist);
     }
 }
