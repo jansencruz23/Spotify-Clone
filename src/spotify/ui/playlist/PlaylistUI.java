@@ -2,11 +2,15 @@ package spotify.ui.playlist;
 
 import helper.fonts.*;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import components.*;
 import spotify.playlists.*;
 import spotify.songs.Song;
+import spotify.ui.song.SongUI;
 
 public class PlaylistUI extends javax.swing.JFrame {
 
+    ArrayList<SongUI> songsUi = new ArrayList<>();
     ArrayList<Song> songs = new ArrayList<>();
     Playlist playlist;
     
@@ -17,6 +21,8 @@ public class PlaylistUI extends javax.swing.JFrame {
         
         initComponents();
         displayPlaylistInfo();
+        mapSongsToUI();
+        displaySongs();
         setLocationRelativeTo(null);
     }
 
@@ -34,7 +40,7 @@ public class PlaylistUI extends javax.swing.JFrame {
         lblIcon = new javax.swing.JLabel();
         lblPlaylistTitle = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        lblUsername = new javax.swing.JLabel();
+        lblInfo = new javax.swing.JLabel();
         panelBody = new javax.swing.JPanel();
         panelBodyHeader = new javax.swing.JPanel();
         panelSongs = new javax.swing.JPanel();
@@ -100,10 +106,10 @@ public class PlaylistUI extends javax.swing.JFrame {
         jLabel3.setText("Playlist");
         panelHeader.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 130, -1, -1));
 
-        lblUsername.setFont(Fonts.getSpotifyBoldFont(15f));
-        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsername.setText("Username");
-        panelHeader.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 160, -1));
+        lblInfo.setFont(Fonts.getSpotifyBoldFont(15f));
+        lblInfo.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfo.setText("Username");
+        panelHeader.add(lblInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 160, -1));
 
         jPanel4.add(panelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 767, 318));
 
@@ -122,17 +128,7 @@ public class PlaylistUI extends javax.swing.JFrame {
 
         panelBody.add(panelBodyHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        javax.swing.GroupLayout panelSongsLayout = new javax.swing.GroupLayout(panelSongs);
-        panelSongs.setLayout(panelSongsLayout);
-        panelSongsLayout.setHorizontalGroup(
-            panelSongsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelSongsLayout.setVerticalGroup(
-            panelSongsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
+        panelSongs.setLayout(new java.awt.GridLayout(0, 1));
         panelBody.add(panelSongs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 136, 770, 70));
 
         jPanel4.add(panelBody, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 324, 767, -1));
@@ -181,9 +177,14 @@ public class PlaylistUI extends javax.swing.JFrame {
         lblPlaylistTitle.setText(playlist.getTitle());
     }
     
+    private void mapSongsToUI() {
+     
+        songs.forEach(s -> songsUi.add(new SongUI(s)));
+    }
+    
     private void displaySongs() {
         
-        
+        songsUi.forEach(s -> panelSongs.add(s));
     }
     
     
@@ -197,8 +198,8 @@ public class PlaylistUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel lblInfo;
     private javax.swing.JLabel lblPlaylistTitle;
-    private javax.swing.JLabel lblUsername;
     private javax.swing.JPanel panelBody;
     private javax.swing.JPanel panelBodyHeader;
     private javax.swing.JPanel panelHeader;
