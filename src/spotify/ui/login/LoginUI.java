@@ -5,6 +5,8 @@ import components.*;
 import java.awt.Color;
 import helper.fonts.*;
 import javax.swing.JOptionPane;
+import spotify.playlists.Playlists;
+import spotify.ui.main.SpotifyUI;
 import spotify.ui.registration.RegisterUI;
 
 public class LoginUI extends javax.swing.JFrame {
@@ -125,6 +127,7 @@ public class LoginUI extends javax.swing.JFrame {
         btnLogin.setBackground(new java.awt.Color(30, 215, 96));
         btnLogin.setFont(Fonts.getSpotifyMediumFont(15f)
         );
+        btnLogin.setForeground(new java.awt.Color(0, 0, 0));
         btnLogin.setText("Log in");
         btnLogin.setBorder(null);
         btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -154,8 +157,11 @@ public class LoginUI extends javax.swing.JFrame {
         username = txtUsername.getText().trim();
         password = txtPassword.getText();
         
-        if (login.isUserExisting(username, password))
-            JOptionPane.showMessageDialog(null, "Hello " + username);
+        if (login.isUserExisting(username, password)) {
+            dispose();
+            Playlists playlist = new Playlists();
+            new SpotifyUI(playlist).setVisible(true);
+        }
         else
             JOptionPane.showMessageDialog(null, "Incorrect Credentials");
     }//GEN-LAST:event_btnLoginActionPerformed

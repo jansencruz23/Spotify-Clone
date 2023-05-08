@@ -128,6 +128,7 @@ public class RegisterUI extends javax.swing.JFrame {
         btnRegister.setBackground(new java.awt.Color(30, 215, 96));
         btnRegister.setFont(Fonts.getSpotifyMediumFont(15f)
         );
+        btnRegister.setForeground(new java.awt.Color(0, 0, 0));
         btnRegister.setText("Sign up");
         btnRegister.setBorder(null);
         btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

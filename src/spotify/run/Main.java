@@ -1,9 +1,7 @@
 package spotify.run;
 
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
-import spotify.playlists.Playlists;
-import spotify.ui.main.SpotifyUI;
+import spotify.ui.login.LoginUI;
 
 public class Main {
     
@@ -12,8 +10,7 @@ public class Main {
         FlatDarkLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Playlists playlist = new Playlists();
-                new SpotifyUI(playlist).setVisible(true);
+                new LoginUI().setVisible(true);
             }
         });
     }

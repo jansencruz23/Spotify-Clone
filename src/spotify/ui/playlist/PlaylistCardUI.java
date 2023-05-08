@@ -3,6 +3,7 @@ package spotify.ui.playlist;
 import components.CirclePanel;
 import helper.fonts.Fonts;
 import java.awt.Color;
+import spotify.contracts.IPlaylistClickCallback;
 import spotify.playlists.Playlist;
 import spotify.ui.main.SpotifyUI;
 
@@ -10,6 +11,8 @@ public class PlaylistCardUI extends CirclePanel {
     
     private Playlist playlist;
     private SpotifyUI main;
+    
+    private IPlaylistClickCallback callback;
     
     public PlaylistCardUI() {
         super(10);
@@ -54,10 +57,17 @@ public class PlaylistCardUI extends CirclePanel {
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(67, 10, 285, 50));
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setCallback(IPlaylistClickCallback callback) {
+        
+        this.callback = callback;
+    }
+    
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         
-        // main.dispose();
-        new PlaylistUI(playlist).setVisible(true);
+        if (callback != null) {
+            callback.onPlaylistCardClick();
+            new PlaylistUI(playlist).setVisible(true);
+        }
     }//GEN-LAST:event_formMouseClicked
 
 

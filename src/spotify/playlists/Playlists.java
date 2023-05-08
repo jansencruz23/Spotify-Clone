@@ -70,9 +70,7 @@ public class Playlists implements Serializable {
             output.close();
             System.out.println("Songs saved");
         }
-        catch(IOException ex) {
-            ex.printStackTrace();
-        }
+        catch(IOException ex) { }
     }
     
     public void initOriginalPlaylist() {

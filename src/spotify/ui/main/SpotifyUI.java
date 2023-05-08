@@ -3,9 +3,10 @@ package spotify.ui.main;
 import spotify.ui.playlist.PlaylistCardUI;
 import helper.fonts.*;
 import java.util.ArrayList;
+import spotify.contracts.IPlaylistClickCallback;
 import spotify.playlists.*;
 
-public class SpotifyUI extends javax.swing.JFrame {
+public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallback {
 
     Playlists playlists = new Playlists();
     ArrayList<PlaylistCardUI> playlistCards;
@@ -130,6 +131,12 @@ public class SpotifyUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @Override
+    public void onPlaylistCardClick() {
+        
+        dispose();
+    }
+    
     private void initPlaylists() {
         
         
@@ -137,7 +144,10 @@ public class SpotifyUI extends javax.swing.JFrame {
     
     private void displayPlaylists() {
         
-        playlistCards.forEach(p -> panelTopPL.add(p));
+        playlistCards.forEach(p -> {
+            panelTopPL.add(p);
+            p.setCallback(this);
+        });   
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
