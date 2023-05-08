@@ -3,6 +3,7 @@ package spotify.songs;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
@@ -16,15 +17,23 @@ public class Song {
     private String title;
     private String artist;
     private int duration;
+    private ArrayList<Integer> includedPlaylist = new ArrayList<>();
     private ImageIcon icon;
     
-    public Song(File file, String title, String artist, int duration, ImageIcon icon) {
+    public Song(File file, int id, String title, String artist, int duration, ImageIcon icon, int playlistId) {
         
+        this.id = id;
         this.file = file;
         this.title = title;
         this.artist = artist;
         this.duration = duration;
         this.icon = icon;
+        this.includedPlaylist.add(playlistId);
+        
+        initThread();
+    }
+    
+    public Song() {
         
         initThread();
     }
@@ -32,6 +41,11 @@ public class Song {
     public File getFile() {
         
         return file;
+    }
+    
+    public int getId() {
+        
+        return id;
     }
     
     public String getTitle() {
@@ -52,6 +66,11 @@ public class Song {
     public ImageIcon getIcon() {
         
         return icon;
+    }
+    
+    public static Thread getThread() {
+        
+        return thread;
     }
     
     public void stopMusic() {

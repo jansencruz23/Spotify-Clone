@@ -16,7 +16,7 @@ public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallb
         playlistCards = playlists.getPlaylistCards();
         
         initComponents();
-        initPlaylists();
+        displayPlayer();
         displayPlaylists();
         setLocationRelativeTo(null);
     }
@@ -26,7 +26,7 @@ public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallb
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        panelPlayer = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -52,18 +52,8 @@ public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallb
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 280));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 90, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 1010, 90));
+        panelPlayer.setLayout(new java.awt.GridLayout());
+        getContentPane().add(panelPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 1010, 90));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -136,12 +126,7 @@ public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallb
         
         dispose();
     }
-    
-    private void initPlaylists() {
         
-        
-    }
-    
     private void displayPlaylists() {
         
         playlistCards.forEach(p -> {
@@ -150,16 +135,22 @@ public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallb
         });   
     }
     
+    private void displayPlayer() {
+        
+        Player player = new Player();
+        panelPlayer.add(player);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblGreet;
+    private javax.swing.JPanel panelPlayer;
     private javax.swing.JPanel panelTopPL;
     // End of variables declaration//GEN-END:variables
 }

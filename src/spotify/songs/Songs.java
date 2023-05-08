@@ -13,6 +13,11 @@ public class Songs implements Serializable{
     final String fileName = "songs.bin";
     private ArrayList<Song> songs;
     
+    public Songs() {
+        
+        initOriginalSongs();
+    }
+    
     public ArrayList<Song> getSongs() {
         
         return songs;
@@ -23,14 +28,15 @@ public class Songs implements Serializable{
         try {
             ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName));
             Songs song = (Songs) input.readObject();
+            this.songs = song.getSongs();
             
             return song.getSongs();
         }
         catch(IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
         
-        return null;
+        return new ArrayList<Song>();
     }
     
     public void addToSongs(Song song) {
@@ -49,5 +55,10 @@ public class Songs implements Serializable{
         catch(IOException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public void initOriginalSongs() {
+        
+        
     }
 }

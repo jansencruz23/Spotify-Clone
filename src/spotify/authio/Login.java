@@ -4,15 +4,23 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.stream.Stream;
 
 public class Login {
     
-    File file = new File("records/login/users.txt");
+    final Path FILE_PATH = Path.of("records/login/users.txt");
    
     public boolean isUserExisting(String username, String password) {
         
         try {
             
+            Stream<String> lines = Files.lines(FILE_PATH);
+            return lines.map(t -> t.split("\\s+"))
+                 .anyMatch(t -> t[0].equals(username) && t[1].equals(password));
+            
+            /*
             FileReader fileReader = new FileReader(file);
             BufferedReader reader = new BufferedReader(fileReader);
             
@@ -25,12 +33,12 @@ public class Login {
                     reader.close();
                     return true;
                 }
-            }
+            }*/
         }
         catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        
+    
         return false;
     }
 }

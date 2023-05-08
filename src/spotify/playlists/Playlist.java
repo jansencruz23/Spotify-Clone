@@ -12,8 +12,9 @@ public class Playlist {
     private String title;
     private ImageIcon icon;
     
-    public Playlist(String title, ImageIcon icon) {
+    public Playlist(int id, String title, ImageIcon icon) {
         
+        this.id = id;
         this.title = title;
         this.icon = icon;
     }
