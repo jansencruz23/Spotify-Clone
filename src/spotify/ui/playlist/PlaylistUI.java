@@ -7,6 +7,7 @@ import components.*;
 import java.awt.Dimension;
 import spotify.playlists.*;
 import spotify.songs.Song;
+import spotify.songs.Songs;
 import spotify.ui.song.SongUI;
 
 public class PlaylistUI extends javax.swing.JFrame {

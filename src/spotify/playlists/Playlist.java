@@ -18,6 +18,11 @@ public class Playlist {
         this.icon = icon;
     }
     
+    public int getId() {
+        
+        return id;
+    }
+    
     public ArrayList<Song> getPlaylist() {
         
         return playlist;

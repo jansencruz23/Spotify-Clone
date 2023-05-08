@@ -15,11 +15,11 @@ public class PlaylistCardUI extends CirclePanel {
         super(10);
     }
 
-    public PlaylistCardUI(Playlist playlist, SpotifyUI main) {
+    public PlaylistCardUI(Playlist playlist) {
         super(10, new Color(46,42,44));
         
         this.playlist = playlist;
-        this.main = main;
+        //this.main = main;
         
         initComponents();
         
@@ -47,8 +47,7 @@ public class PlaylistCardUI extends CirclePanel {
         lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pl1.png"))); // NOI18N
         add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 65, 65));
 
-        lblTitle.setFont(Fonts.getSpotifyBoldFont(16f)
-        );
+        lblTitle.setFont(Fonts.getSpotifyBoldFont(16f));
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setText("Hot Hits Philippines");
         lblTitle.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 1));
@@ -57,7 +56,7 @@ public class PlaylistCardUI extends CirclePanel {
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         
-        main.dispose();
+        // main.dispose();
         new PlaylistUI(playlist).setVisible(true);
     }//GEN-LAST:event_formMouseClicked
 

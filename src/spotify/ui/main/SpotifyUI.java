@@ -3,18 +3,14 @@ package spotify.ui.main;
 import spotify.ui.playlist.PlaylistCardUI;
 import helper.fonts.*;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import spotify.playlists.*;
-import components.*;
-import java.io.File;
-import spotify.songs.Song;
 
 public class SpotifyUI extends javax.swing.JFrame {
 
     Playlists playlists = new Playlists();
     ArrayList<PlaylistCardUI> playlistCards;
     
-    public SpotifyUI() {
+    public SpotifyUI(Playlists playlist) {
         
         playlistCards = playlists.getPlaylistCards();
         
@@ -136,17 +132,7 @@ public class SpotifyUI extends javax.swing.JFrame {
 
     private void initPlaylists() {
         
-        Playlist p1 = new Playlist("Top Hits Philippines", new ImageIcon(getClass().getResource("/img/pl1.png")));
-        p1.addToPlaylist(new Song(new File("songs/song.mp3"), "panaginip", "iluna", 500, new ImageIcon(getClass().getResource("/img/s1.png"))));
-        p1.addToPlaylist(new Song(new File("songs/song.mp3"), "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png"))));
-                p1.addToPlaylist(new Song(new File("songs/song.mp3"), "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png"))));
-                
-        playlistCards.add(new PlaylistCardUI(p1, this));
-        playlistCards.add(new PlaylistCardUI(new Playlist("This is Taylor Swift", new ImageIcon(getClass().getResource("/img/pl2.png"))), this));
-        playlistCards.add(new PlaylistCardUI(new Playlist("Chillax Ka Muna!", new ImageIcon(getClass().getResource("/img/pl3.png"))), this));
-        playlistCards.add(new PlaylistCardUI(new Playlist("Liked Songs", new ImageIcon(getClass().getResource("/img/pl4.png"))), this));
-        playlistCards.add(new PlaylistCardUI(new Playlist("Today's Top Hits", new ImageIcon(getClass().getResource("/img/pl5.png"))), this));
-        playlistCards.add(new PlaylistCardUI(new Playlist("Mang Kanor", new ImageIcon(getClass().getResource("/img/pl6.png"))), this));
+        
     }
     
     private void displayPlaylists() {

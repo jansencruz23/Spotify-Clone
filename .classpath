@@ -13,5 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="dist/lib/AbsoluteLayout.jar"/>
 	<classpathentry kind="lib" path="dist/Spotify.jar"/>
+	<classpathentry kind="lib" path="/TextEditor/flatlaf-3.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

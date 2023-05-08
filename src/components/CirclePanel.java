@@ -34,6 +34,7 @@ public class CirclePanel extends JPanel
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
+            
             Dimension arcs = new Dimension(cornerRadius, cornerRadius);
             int width = getWidth();
             int height = getHeight();
@@ -46,8 +47,8 @@ public class CirclePanel extends JPanel
             } else {
                 graphics.setColor(getBackground());
             }
-            graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint background
+            graphics.fillRoundRect(0, 0, width, height, arcs.width, arcs.height); //paint background
             graphics.setColor(getForeground());
-            graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
+            // graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
         }
     }
