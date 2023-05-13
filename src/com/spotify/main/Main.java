@@ -8,10 +8,8 @@ public class Main {
     public static void main(String args[]) {
 
         FlatDarkLaf.setup();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginUI().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new LoginUI().setVisible(true);
         });
     }
 }

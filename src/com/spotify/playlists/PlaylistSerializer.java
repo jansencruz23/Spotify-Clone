@@ -6,16 +6,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.spotify.ui.playlist.PlaylistCardUI;
+import com.spotify.ui.playlist.PlaylistListUI;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import com.spotify.songs.Song;
+import java.util.Comparator;
 
 public class PlaylistSerializer implements Serializable {
     
     final String fileName = "playlists.bin";
-    private ArrayList<PlaylistCardUI> playlistsCards = new ArrayList<>();
+    private ArrayList<PlaylistListUI> playlistsCards = new ArrayList<>();
     private ArrayList<Playlist> playlists;
     
     public PlaylistSerializer() {
@@ -24,13 +25,13 @@ public class PlaylistSerializer implements Serializable {
         initOriginalPlaylist();
     }
     
-    public ArrayList<PlaylistCardUI> getPlaylistCards() {
+    public ArrayList<PlaylistListUI> getPlaylistCards() {
         
-        playlists.forEach(p -> playlistsCards.add(new PlaylistCardUI(p)));
+        playlists.forEach(p -> playlistsCards.add(new PlaylistListUI(p)));
         return playlistsCards;
     }
     
-    public void addToPlaylistCards(PlaylistCardUI playlist) {
+    public void addToPlaylistCards(PlaylistListUI playlist) {
         
         playlistsCards.add(playlist);
     }
@@ -79,8 +80,8 @@ public class PlaylistSerializer implements Serializable {
         
         Playlist p1 = new Playlist(0, "Top Hits Philippines", new ImageIcon(getClass().getResource("/img/pl1.png")));
         p1.addToPlaylist(new Song(new File("songs/song.mp3"), 1, "panaginip", "iluna", 500, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
-        p1.addToPlaylist(new Song(new File("songs/song.mp3"), 2, "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
-        p1.addToPlaylist(new Song(new File("songs/song.mp3"), 3, "Uhaw (Tayong Lahat)", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
+        p1.addToPlaylist(new Song(new File("songs/lofi.mp3"), 2, "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
+        p1.addToPlaylist(new Song(new File("songs/move.mp3"), 3, "Uhaw (Tayong Lahat)", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
         playlists.add(p1);
         
         Playlist p2 = new Playlist(1, "This is Taylor Swift", new ImageIcon(getClass().getResource("/img/pl2.png")));

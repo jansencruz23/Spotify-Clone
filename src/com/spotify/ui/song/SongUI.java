@@ -2,14 +2,17 @@ package com.spotify.ui.song;
 
 import com.spotify.fonts.Fonts;
 import com.spotify.songs.Song;
+import com.spotify.ui.main.PlayerUI;
 
 public class SongUI extends javax.swing.JPanel {
-    
+
     private Song song;
+    PlayerUI player; 
     
-    public SongUI(Song song) {
+    public SongUI(Song song, PlayerUI player) {
         
         this.song = song;
+        this.player = player;
         
         initComponents();
         lblIcon.setIcon(song.getIcon());
@@ -74,10 +77,16 @@ public class SongUI extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public Song getSong() {
+        
+        return song;
+    }
+    
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         
         song.playSong();
+        player.setupPlayerUI(song);
     }//GEN-LAST:event_formMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

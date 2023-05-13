@@ -21,6 +21,8 @@ public class Song {
     private ArrayList<Integer> includedPlaylist = new ArrayList<>();
     private ImageIcon icon;
     
+    private int timestamp;
+    
     public Song(File file, int id, String title, String artist, int duration, ImageIcon icon, int playlistId) {
         
         this.id = id;
@@ -100,11 +102,32 @@ public class Song {
     
     public void playSong() {
         
-        if(!thread.isAlive())
+        System.out.println(getTitle());
+        if(!thread.isAlive()) {
+            initThread();
             thread.start();          
+        }
         else {
             stopMusic();
             playSong();
+        }
+    }
+    
+    public int pauseSong() {
+        
+        timestamp = player.getPosition();
+        stopMusic();
+        
+        return timestamp;
+    }
+    
+    public void resumeSong(int timestamp) {
+     
+        try {
+            player.play(timestamp);
+        }
+        catch(JavaLayerException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 }

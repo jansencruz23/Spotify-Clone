@@ -2,14 +2,15 @@ package com.spotify.ui.main;
 
 import com.spotify.playlists.PlaylistSerializer;
 import com.spotify.fonts.Fonts;
-import com.spotify.ui.playlist.PlaylistCardUI;
+import com.spotify.ui.playlist.PlaylistListUI;
 import java.util.ArrayList;
 import com.spotify.contracts.IPlaylistClickCallback;
 
 public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallback {
 
     PlaylistSerializer playlists = new PlaylistSerializer();
-    ArrayList<PlaylistCardUI> playlistCards;
+    ArrayList<PlaylistListUI> playlistCards;
+    PlayerUI player;
     
     public SpotifyUI(PlaylistSerializer playlist) {
         
@@ -131,13 +132,13 @@ public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallb
         
         playlistCards.forEach(p -> {
             panelTopPL.add(p);
-            p.setCallback(this);
+            p.setCallback(this, player);
         });   
     }
     
     private void displayPlayer() {
         
-        Player player = new Player();
+        player = new PlayerUI();
         panelPlayer.add(player);
     }
     
