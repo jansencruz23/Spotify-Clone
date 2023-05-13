@@ -6,17 +6,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.spotify.ui.playlist.PlaylistListUI;
+import com.spotify.ui.playlist.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import com.spotify.songs.Song;
-import java.util.Comparator;
 
 public class PlaylistSerializer implements Serializable {
     
     final String fileName = "playlists.bin";
-    private ArrayList<PlaylistListUI> playlistsCards = new ArrayList<>();
+    private ArrayList<PlaylistListUI> playlistsList = new ArrayList<>();
+    private ArrayList<PlaylistCardUI> playlistCards = new ArrayList<>();
     private ArrayList<Playlist> playlists;
     
     public PlaylistSerializer() {
@@ -25,15 +25,21 @@ public class PlaylistSerializer implements Serializable {
         initOriginalPlaylist();
     }
     
-    public ArrayList<PlaylistListUI> getPlaylistCards() {
+    public ArrayList<PlaylistListUI> getPlaylistList() {
         
-        playlists.forEach(p -> playlistsCards.add(new PlaylistListUI(p)));
-        return playlistsCards;
+        playlists.forEach(p -> playlistsList.add(new PlaylistListUI(p)));
+        return playlistsList;
+    }
+    
+    public ArrayList<PlaylistCardUI> getPlaylistCard() {
+        
+        playlists.forEach(p -> playlistCards.add(new PlaylistCardUI(p)));
+        return playlistCards;
     }
     
     public void addToPlaylistCards(PlaylistListUI playlist) {
         
-        playlistsCards.add(playlist);
+        playlistsList.add(playlist);
     }
     
     public ArrayList<Playlist> getPlaylist() {

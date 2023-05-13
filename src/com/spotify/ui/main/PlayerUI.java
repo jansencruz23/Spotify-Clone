@@ -52,7 +52,6 @@ public class PlayerUI extends javax.swing.JPanel {
         lblIcon.setIcon(song.getIcon());
     }
     
-    
     private void lblPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPlayMouseClicked
         
         PlaylistSerializer playlist = new PlaylistSerializer();
@@ -72,7 +71,6 @@ public class PlayerUI extends javax.swing.JPanel {
             //song.playSong();
         //}
     }//GEN-LAST:event_lblPlayMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblArtist;
