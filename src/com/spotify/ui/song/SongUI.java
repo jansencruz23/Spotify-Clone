@@ -91,7 +91,7 @@ public class SongUI extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        song.stopMusic();
+        song.stopSong();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

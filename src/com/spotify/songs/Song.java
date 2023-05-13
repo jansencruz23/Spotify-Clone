@@ -76,7 +76,12 @@ public class Song {
         return thread;
     }
     
-    public void stopMusic() {
+    public int getTimestamp() {
+        
+        return timestamp;
+    }
+    
+    public void stopSong() {
         
         thread.interrupt();
         player.close();
@@ -108,17 +113,15 @@ public class Song {
             thread.start();          
         }
         else {
-            stopMusic();
+            stopSong();
             playSong();
         }
     }
     
-    public int pauseSong() {
+    public void pauseSong() {
         
         timestamp = player.getPosition();
-        stopMusic();
-        
-        return timestamp;
+        stopSong();
     }
     
     public void resumeSong(int timestamp) {

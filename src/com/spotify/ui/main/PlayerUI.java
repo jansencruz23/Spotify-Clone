@@ -59,11 +59,13 @@ public class PlayerUI extends javax.swing.JPanel {
 
         if (!isPlaying) {
             isPlaying = true;
-            song.playSong();
+            song.stopSong();
+            //song.resumeSong(song.getTimestamp());
         }
         else {
             isPlaying = false;
-            song.resumeSong(song.pauseSong());
+            song.playSong();
+            //song.pauseSong();
         }
         //if (!Song.getThread().isAlive()) {
             //Song song = playlist.getPlaylist().get(0);
