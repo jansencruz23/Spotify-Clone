@@ -58,13 +58,11 @@ public class PlayerUI extends javax.swing.JPanel {
         PlaylistSerializer playlist = new PlaylistSerializer();
 
         if (Spotify.isPlaying) {
-            Spotify.isPlaying = true;
-            song.stopSong();
+            song.pauseSong();
             //song.resumeSong(song.getTimestamp());
         }
         else {
-            Spotify.isPlaying = false;
-            song.playSong();
+            song.resumeSong();
             //song.pauseSong();
         }
         //if (!Song.getThread().isAlive()) {

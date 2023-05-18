@@ -1,23 +1,17 @@
 package com.spotify.songs;
 
+import com.spotify.main.PausablePlayer;
 import com.spotify.main.Spotify;
-import java.beans.Customizer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.AudioDevice;
-import javazoom.jl.player.FactoryRegistry;
-import javazoom.jl.player.Player;
-import javazoom.jl.player.advanced.AdvancedPlayer;
 
 public class Song {
     
-    static Thread thread;
-    static Player player;
+    static PausablePlayer player;
     
     private int id;
     private File file;
@@ -26,9 +20,6 @@ public class Song {
     private int duration;
     private ArrayList<Integer> includedPlaylist = new ArrayList<>();
     private ImageIcon icon;
-    
-    private long pauseOffset;
-    private long songLength;
     
     public Song(File file, int id, String title, String artist, int duration, ImageIcon icon, int playlistId) {
         
@@ -39,13 +30,10 @@ public class Song {
         this.duration = duration;
         this.icon = icon;
         this.includedPlaylist.add(playlistId);
-        
-        initThread();
     }
     
     public Song() {
         
-        initThread();
     }
     
     public File getFile() {
@@ -78,69 +66,43 @@ public class Song {
         return icon;
     }
     
-    public Thread getThread() {
-        
-        return thread;
-    }
-            
-    public void stopSong() {
-        
-        Spotify.isPlaying = false;
-        thread.interrupt();
-        player.close();
-        initThread();
-    }
-    
-    private void initThread() {
-        
-        thread = new Thread(() -> {
-            
-            try {
-
-                FileInputStream fileInputStream = new FileInputStream(file);
-                player = new Player(fileInputStream);
-                System.out.println(title + " is playing...");
-                player.play();
-                songLength = fileInputStream.available();
-            }
-            catch (FileNotFoundException | JavaLayerException e) {
-                e.printStackTrace();
-            }
-            catch (IOException e) {}
-        });
-    }
-    
     public void playSong() {
         
-        System.out.println(getTitle());
-        if(!thread.isAlive()) {
-            initThread();
-            thread.start();       
+        if (Spotify.isPlaying) 
+            player.stop();
+        
+        try {
+            FileInputStream fileInput = new FileInputStream(file);
+            player = new PausablePlayer(fileInput);
+            player.play();
             Spotify.isPlaying = true;
-        }
-        else {
-            stopSong();
-            playSong();
+        } 
+        catch (JavaLayerException | FileNotFoundException ex) {
+            ex.printStackTrace();
         }
     }
     
     public void pauseSong() {
         
-        pauseOffset = player.getPosition();
-        stopSong();
+        if (player != null) {
+            player.pause();
+            Spotify.isPlaying = false;
+        }
     }
     
     public void resumeSong() {
-     
-        try {
-            FileInputStream fis = new FileInputStream(file);
-            fis.skip(songLength - pauseOffset);
-            AdvancedPlayer adPlayer = new AdvancedPlayer(fis);
-            
-            adPlayer.play((int) pauseOffset, Integer.MAX_VALUE);
+        
+        if (player != null) {
+            player.resume();
+            Spotify.isPlaying = true;
         }
-        catch(JavaLayerException | IOException ex) {
-            ex.printStackTrace();
+    }
+    
+    public void stopSong() {
+        
+        if (player != null) {
+            player.stop();
+            Spotify.isPlaying = false;
         }
     }
 }
