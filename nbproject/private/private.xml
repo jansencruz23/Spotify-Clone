@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/songs/SongSerializer.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/songs/Song.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/ui/main/Player.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/ui/main/SpotifyUI.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/playlists/PlaylistSerializer.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/ui/song/SongUI.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

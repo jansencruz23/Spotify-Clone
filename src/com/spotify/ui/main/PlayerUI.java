@@ -1,12 +1,12 @@
 package com.spotify.ui.main;
 
+import com.spotify.main.Spotify;
 import com.spotify.playlists.PlaylistSerializer;
 import com.spotify.songs.Song;
 
 public class PlayerUI extends javax.swing.JPanel {
     
     private Song song;
-    private boolean isPlaying;
     
     public PlayerUI() {
         
@@ -22,6 +22,7 @@ public class PlayerUI extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         lblPlay = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(8, 4, 4));
         setPreferredSize(new java.awt.Dimension(1010, 90));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -34,13 +35,13 @@ public class PlayerUI extends javax.swing.JPanel {
         lblTitle.setText("Binhi");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 90, -1));
 
-        lblPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/s1.png"))); // NOI18N
+        lblPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/play.png"))); // NOI18N
         lblPlay.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPlayMouseClicked(evt);
             }
         });
-        add(lblPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, 30));
+        add(lblPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, 40));
     }// </editor-fold>//GEN-END:initComponents
     
     public void setupPlayerUI(Song song) {
@@ -56,13 +57,13 @@ public class PlayerUI extends javax.swing.JPanel {
         
         PlaylistSerializer playlist = new PlaylistSerializer();
 
-        if (!isPlaying) {
-            isPlaying = true;
+        if (Spotify.isPlaying) {
+            Spotify.isPlaying = true;
             song.stopSong();
             //song.resumeSong(song.getTimestamp());
         }
         else {
-            isPlaying = false;
+            Spotify.isPlaying = false;
             song.playSong();
             //song.pauseSong();
         }

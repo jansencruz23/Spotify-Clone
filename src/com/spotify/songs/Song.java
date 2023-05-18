@@ -1,12 +1,18 @@
 package com.spotify.songs;
 
+import com.spotify.main.Spotify;
+import java.beans.Customizer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.AudioDevice;
+import javazoom.jl.player.FactoryRegistry;
 import javazoom.jl.player.Player;
+import javazoom.jl.player.advanced.AdvancedPlayer;
 
 public class Song {
     
@@ -21,7 +27,8 @@ public class Song {
     private ArrayList<Integer> includedPlaylist = new ArrayList<>();
     private ImageIcon icon;
     
-    private int timestamp;
+    private long pauseOffset;
+    private long songLength;
     
     public Song(File file, int id, String title, String artist, int duration, ImageIcon icon, int playlistId) {
         
@@ -75,14 +82,10 @@ public class Song {
         
         return thread;
     }
-    
-    public int getTimestamp() {
-        
-        return timestamp;
-    }
-    
+            
     public void stopSong() {
         
+        Spotify.isPlaying = false;
         thread.interrupt();
         player.close();
         initThread();
@@ -98,10 +101,12 @@ public class Song {
                 player = new Player(fileInputStream);
                 System.out.println(title + " is playing...");
                 player.play();
+                songLength = fileInputStream.available();
             }
             catch (FileNotFoundException | JavaLayerException e) {
                 e.printStackTrace();
             }
+            catch (IOException e) {}
         });
     }
     
@@ -110,7 +115,8 @@ public class Song {
         System.out.println(getTitle());
         if(!thread.isAlive()) {
             initThread();
-            thread.start();          
+            thread.start();       
+            Spotify.isPlaying = true;
         }
         else {
             stopSong();
@@ -120,17 +126,21 @@ public class Song {
     
     public void pauseSong() {
         
-        timestamp = player.getPosition();
+        pauseOffset = player.getPosition();
         stopSong();
     }
     
-    public void resumeSong(int timestamp) {
+    public void resumeSong() {
      
         try {
-            player.play(timestamp);
+            FileInputStream fis = new FileInputStream(file);
+            fis.skip(songLength - pauseOffset);
+            AdvancedPlayer adPlayer = new AdvancedPlayer(fis);
+            
+            adPlayer.play((int) pauseOffset, Integer.MAX_VALUE);
         }
-        catch(JavaLayerException ex) {
-            System.out.println(ex.getMessage());
+        catch(JavaLayerException | IOException ex) {
+            ex.printStackTrace();
         }
     }
 }
