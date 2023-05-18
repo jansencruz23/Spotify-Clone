@@ -86,7 +86,8 @@ public class SongUI extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         
         song.playSong();
-        player.setupPlayerUI(song);
+        player.changePauseIcon();
+        player.setupPlayer(song);
     }//GEN-LAST:event_formMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

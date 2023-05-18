@@ -4,6 +4,7 @@ import com.spotify.swing.CirclePanel;
 import com.spotify.fonts.Fonts;
 import java.awt.Color;
 import com.spotify.contracts.IPlaylistClickCallback;
+import com.spotify.main.Spotify;
 import com.spotify.playlists.Playlist;
 import com.spotify.ui.main.PlayerUI;
 
@@ -65,6 +66,7 @@ public class PlaylistListUI extends CirclePanel {
         
         if (callback != null) {
             callback.onPlaylistCardClick();
+            Spotify.PLAYLIST_ID = playlist.getId();
             new PlaylistUI(playlist, player).setVisible(true);
         }
     }//GEN-LAST:event_formMouseClicked

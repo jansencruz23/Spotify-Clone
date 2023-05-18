@@ -82,12 +82,10 @@ public class PlaylistSerializer implements Serializable {
     
     public void initOriginalPlaylist() {
         
-        Thread thread = new Thread();
-        
         Playlist p1 = new Playlist(0, "Top Hits Philippines", new ImageIcon(getClass().getResource("/img/pl1.png")));
-        p1.addToPlaylist(new Song(new File("songs/song.mp3"), 1, "panaginip", "iluna", 500, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
-        p1.addToPlaylist(new Song(new File("songs/lofi.mp3"), 2, "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
-        p1.addToPlaylist(new Song(new File("songs/move.mp3"), 3, "Uhaw (Tayong Lahat)", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
+        p1.addToPlaylist(new Song(new File("songs/song.mp3"), 0, "panaginip", "iluna", 500, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
+        p1.addToPlaylist(new Song(new File("songs/lofi.mp3"), 1, "Nahuhulog Na Sa'yo", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
+        p1.addToPlaylist(new Song(new File("songs/move.mp3"), 2, "Uhaw (Tayong Lahat)", "Noah Alejandre", 401, new ImageIcon(getClass().getResource("/img/s1.png")), p1.getId()));
         playlists.add(p1);
         
         Playlist p2 = new Playlist(1, "This is Taylor Swift", new ImageIcon(getClass().getResource("/img/pl2.png")));

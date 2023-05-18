@@ -68,14 +68,14 @@ public class Song {
     
     public void playSong() {
         
-        if (Spotify.isPlaying) 
+        if (Spotify.IS_PLAYING) 
             player.stop();
         
         try {
             FileInputStream fileInput = new FileInputStream(file);
             player = new PausablePlayer(fileInput);
             player.play();
-            Spotify.isPlaying = true;
+            Spotify.IS_PLAYING = true;
         } 
         catch (JavaLayerException | FileNotFoundException ex) {
             ex.printStackTrace();
@@ -86,7 +86,7 @@ public class Song {
         
         if (player != null) {
             player.pause();
-            Spotify.isPlaying = false;
+            Spotify.IS_PLAYING = false;
         }
     }
     
@@ -94,7 +94,7 @@ public class Song {
         
         if (player != null) {
             player.resume();
-            Spotify.isPlaying = true;
+            Spotify.IS_PLAYING = true;
         }
     }
     
@@ -102,7 +102,7 @@ public class Song {
         
         if (player != null) {
             player.stop();
-            Spotify.isPlaying = false;
+            Spotify.IS_PLAYING = false;
         }
     }
 }
