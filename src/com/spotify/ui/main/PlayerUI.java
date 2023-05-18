@@ -1,12 +1,12 @@
 package com.spotify.ui.main;
 
-import com.spotify.main.Spotify;
-import com.spotify.playlists.PlaylistSerializer;
+import com.spotify.main.Player;
 import com.spotify.songs.Song;
 
 public class PlayerUI extends javax.swing.JPanel {
     
     private Song song;
+    private Player player = new Player();
     
     public PlayerUI() {
         
@@ -55,20 +55,7 @@ public class PlayerUI extends javax.swing.JPanel {
     
     private void lblPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPlayMouseClicked
         
-        PlaylistSerializer playlist = new PlaylistSerializer();
-
-        if (Spotify.isPlaying) {
-            song.pauseSong();
-            //song.resumeSong(song.getTimestamp());
-        }
-        else {
-            song.resumeSong();
-            //song.pauseSong();
-        }
-        //if (!Song.getThread().isAlive()) {
-            //Song song = playlist.getPlaylist().get(0);
-            //song.playSong();
-        //}
+        player.playMusic(song);
     }//GEN-LAST:event_lblPlayMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
