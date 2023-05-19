@@ -107,12 +107,20 @@ public class PlayerUI extends javax.swing.JPanel {
         lblTitle.setText(song.getTitle());
         lblArtist.setText(song.getArtist());
         lblIcon.setIcon(song.getIcon());
-                        
+        
+        updateIcons();
+    }
+    
+    public void updateIcons() {
+                                
         if (Spotify.IS_LOOP)
             changeLoopOnIcon();
         
         if (Spotify.IS_PLAYING)
             changePauseIcon();
+        
+        if (Spotify.IS_SHUFFLED)
+            changeShuffleOnIcon();
     }
     
     public void changePlayIcon() {
@@ -137,12 +145,12 @@ public class PlayerUI extends javax.swing.JPanel {
     
     public void changeLoopOnIcon() {
         
-        lblLoop.setIcon(new ImageIcon(getClass().getResource("/img/loop.png")));
+        lblLoop.setIcon(new ImageIcon(getClass().getResource("/img/loop2.png")));
     }
     
     public void changeLoopOffIcon() {
         
-        lblLoop.setIcon(new ImageIcon(getClass().getResource("/img/loop2.png")));
+        lblLoop.setIcon(new ImageIcon(getClass().getResource("/img/loop.png")));
     }
     
     private void lblPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPlayMouseClicked
