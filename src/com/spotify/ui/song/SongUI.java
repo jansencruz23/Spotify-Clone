@@ -1,7 +1,6 @@
 package com.spotify.ui.song;
 
 import com.spotify.fonts.Fonts;
-import com.spotify.main.Spotify;
 import com.spotify.songs.Song;
 import com.spotify.ui.main.PlayerUI;
 import com.spotify.ui.playlist.PlaylistUI;

@@ -101,19 +101,12 @@ public class PlayerUI extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     public void setupPlayer(Song song) {
-        
+       
         this.song = song;
         
-        if (song == null) {
-            lblTitle.setText("");
-            lblArtist.setText("");
-            lblIcon.setIcon(null);
-        }
-        else {
-            lblTitle.setText(song.getTitle());
-            lblArtist.setText(song.getArtist());
-            lblIcon.setIcon(song.getIcon());
-        }
+        lblTitle.setText(song == null ? "" : song.getTitle());
+        lblArtist.setText(song == null ? "" : song.getArtist());
+        lblIcon.setIcon(song == null ? null : song.getIcon());
         
         updateIcons();
     }
@@ -173,7 +166,6 @@ public class PlayerUI extends javax.swing.JPanel {
     private void lblNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNextMouseClicked
                       
         Song nextSong = player.playNext(Spotify.CURRENT_PLAYLIST, song);
-        
         setupPlayer(nextSong);
         changePauseIcon();
     }//GEN-LAST:event_lblNextMouseClicked
@@ -181,33 +173,29 @@ public class PlayerUI extends javax.swing.JPanel {
     private void lblPreviousMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPreviousMouseClicked
        
         Song prevSong = player.playPrevious(Spotify.CURRENT_PLAYLIST, song);
-        
         setupPlayer(prevSong);
         changePauseIcon();
     }//GEN-LAST:event_lblPreviousMouseClicked
 
     private void lblShuffleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShuffleMouseClicked
+
+        Spotify.IS_SHUFFLED = !Spotify.IS_SHUFFLED;
         
-        if (Spotify.IS_SHUFFLED) {
-            changeShuffleOffIcon();
-            Spotify.IS_SHUFFLED = false;
-        }
-        else {
+        if (Spotify.IS_SHUFFLED) 
             changeShuffleOnIcon();
-            Spotify.IS_SHUFFLED = true;
-        }
+        else 
+            changeShuffleOffIcon();
+        
     }//GEN-LAST:event_lblShuffleMouseClicked
 
     private void lblLoopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoopMouseClicked
        
-        if (Spotify.IS_LOOP) {
-            changeLoopOffIcon();
-            Spotify.IS_LOOP = false;
-        }
-        else {
+        Spotify.IS_LOOP = !Spotify.IS_LOOP;
+        
+        if (Spotify.IS_LOOP) 
             changeLoopOnIcon();
-            Spotify.IS_LOOP = true;
-        }
+        else 
+            changeLoopOffIcon();
     }//GEN-LAST:event_lblLoopMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
