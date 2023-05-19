@@ -2,12 +2,12 @@ package com.spotify.main;
 
 import com.spotify.playlists.Playlist;
 import com.spotify.songs.Song;
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Player {
     
-    private Playlist playlist;
-
+    Random random = new Random();
+    
     public void playMusic(Song song) {
         
         if (Spotify.IS_PLAYING)
@@ -16,15 +16,52 @@ public class Player {
             song.resumeSong();
     }
     
-    public void playNext(Playlist playlist, Song song) {
-        this.playlist = playlist;
+    public Song playNext(Playlist playlist, Song song) {
         
         if (Spotify.IS_PLAYING)
             song.stopSong();
+        
+        if (Spotify.IS_SHUFFLED) 
+            return playShuffle(playlist, song);
 
-        ArrayList<Song> songs = playlist.getPlaylist();
-        Song nextSong = songs.get(song.getId() + 1);
+        Song nextSong = playlist.getPlaylist()
+                                .get(song.getId() + 1);
         
         nextSong.playSong();
+        
+        return nextSong;
+    }
+    
+    public Song playPrevious(Playlist playlist, Song song) {
+        
+        if (Spotify.IS_PLAYING)
+            song.stopSong();
+        
+        if (Spotify.IS_SHUFFLED) 
+            return playShuffle(playlist, song);
+
+        Song prevSong = playlist.getPlaylist()
+                                .get(song.getId() - 1);
+        
+        prevSong.playSong();
+        
+        return prevSong;
+    }
+    
+    public Song playShuffle(Playlist playlist, Song song) {
+        
+        int songId = random.nextInt(playlist.size());
+        
+        while (songId == song.getId())
+            songId = random.nextInt(playlist.size());
+        
+        Song nextSong = playlist.getPlaylist()
+                                .get(songId);
+        
+        System.out.println(nextSong.getTitle());
+        
+        nextSong.playSong();
+        
+        return nextSong;
     }
 }

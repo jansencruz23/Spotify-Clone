@@ -43,4 +43,9 @@ public class Playlist {
         
         playlist.add(song);
     }
+    
+    public int size() {
+     
+        return playlist.size();
+    }
 }

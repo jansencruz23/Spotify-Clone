@@ -33,7 +33,7 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         lblRegister = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
