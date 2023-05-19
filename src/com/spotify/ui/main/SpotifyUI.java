@@ -5,6 +5,7 @@ import com.spotify.fonts.Fonts;
 import com.spotify.ui.playlist.PlaylistListUI;
 import java.util.ArrayList;
 import com.spotify.contracts.IPlaylistClickCallback;
+import com.spotify.main.Spotify;
 import com.spotify.ui.playlist.PlaylistCardUI;
 import java.awt.Dimension;
 
@@ -14,6 +15,19 @@ public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallb
     ArrayList<PlaylistListUI> playlistList;
     ArrayList<PlaylistCardUI> playlistCard;
     PlayerUI player;
+    
+    public SpotifyUI(PlaylistSerializer playlist, PlayerUI player) {
+        
+        playlistList = playlists.getPlaylistList();
+        playlistCard = playlists.getPlaylistCard();
+        this.player = player;
+        
+        initComponents();
+        displayPlayer();
+        displayPlaylistList();
+        displayPlaylistCard();
+        setLocationRelativeTo(null);
+    }
     
     public SpotifyUI(PlaylistSerializer playlist) {
         
@@ -209,6 +223,10 @@ public class SpotifyUI extends javax.swing.JFrame implements IPlaylistClickCallb
     private void displayPlayer() {
         
         player = new PlayerUI();
+        
+        if (Spotify.PLAYING_SONG != null) 
+            player.setupPlayer(Spotify.PLAYING_SONG);
+        
         panelPlayer.add(player);
     }
     

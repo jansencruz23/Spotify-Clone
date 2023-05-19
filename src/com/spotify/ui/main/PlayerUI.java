@@ -28,11 +28,12 @@ public class PlayerUI extends javax.swing.JPanel {
         lblIcon = new javax.swing.JLabel();
         lblArtist = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        panelControls = new javax.swing.JPanel();
         lblShuffle = new javax.swing.JLabel();
         lblPrevious = new javax.swing.JLabel();
         lblPlay = new javax.swing.JLabel();
         lblNext = new javax.swing.JLabel();
+        lblLoop = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(8, 4, 4));
         setPreferredSize(new java.awt.Dimension(1010, 90));
@@ -47,8 +48,8 @@ public class PlayerUI extends javax.swing.JPanel {
         lblTitle.setText("Binhi");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 90, -1));
 
-        jPanel1.setBackground(new java.awt.Color(8, 4, 4));
-        jPanel1.setLayout(new java.awt.GridLayout(1, 5));
+        panelControls.setBackground(new java.awt.Color(8, 4, 4));
+        panelControls.setLayout(new java.awt.GridLayout(1, 5));
 
         lblShuffle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblShuffle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/shuffle.png"))); // NOI18N
@@ -57,7 +58,7 @@ public class PlayerUI extends javax.swing.JPanel {
                 lblShuffleMouseClicked(evt);
             }
         });
-        jPanel1.add(lblShuffle);
+        panelControls.add(lblShuffle);
 
         lblPrevious.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/prev.png"))); // NOI18N
@@ -67,7 +68,7 @@ public class PlayerUI extends javax.swing.JPanel {
                 lblPreviousMouseClicked(evt);
             }
         });
-        jPanel1.add(lblPrevious);
+        panelControls.add(lblPrevious);
 
         lblPlay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/play.png"))); // NOI18N
@@ -76,7 +77,7 @@ public class PlayerUI extends javax.swing.JPanel {
                 lblPlayMouseClicked(evt);
             }
         });
-        jPanel1.add(lblPlay);
+        panelControls.add(lblPlay);
 
         lblNext.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/next.png"))); // NOI18N
@@ -85,9 +86,18 @@ public class PlayerUI extends javax.swing.JPanel {
                 lblNextMouseClicked(evt);
             }
         });
-        jPanel1.add(lblNext);
+        panelControls.add(lblNext);
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 270, 50));
+        lblLoop.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLoop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loop.png"))); // NOI18N
+        lblLoop.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLoopMouseClicked(evt);
+            }
+        });
+        panelControls.add(lblLoop);
+
+        add(panelControls, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 270, 50));
     }// </editor-fold>//GEN-END:initComponents
     
     public void setupPlayer(Song song) {
@@ -97,6 +107,12 @@ public class PlayerUI extends javax.swing.JPanel {
         lblTitle.setText(song.getTitle());
         lblArtist.setText(song.getArtist());
         lblIcon.setIcon(song.getIcon());
+                        
+        if (Spotify.IS_LOOP)
+            changeLoopOnIcon();
+        
+        if (Spotify.IS_PLAYING)
+            changePauseIcon();
     }
     
     public void changePlayIcon() {
@@ -117,6 +133,16 @@ public class PlayerUI extends javax.swing.JPanel {
     public void changeShuffleOffIcon() {
         
         lblShuffle.setIcon(new ImageIcon(getClass().getResource("/img/shuffle.png")));
+    }
+    
+    public void changeLoopOnIcon() {
+        
+        lblLoop.setIcon(new ImageIcon(getClass().getResource("/img/loop.png")));
+    }
+    
+    public void changeLoopOffIcon() {
+        
+        lblLoop.setIcon(new ImageIcon(getClass().getResource("/img/loop2.png")));
     }
     
     private void lblPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPlayMouseClicked
@@ -155,19 +181,30 @@ public class PlayerUI extends javax.swing.JPanel {
             changeShuffleOnIcon();
             Spotify.IS_SHUFFLED = true;
         }
-        
-        System.out.println(Spotify.IS_SHUFFLED);
     }//GEN-LAST:event_lblShuffleMouseClicked
 
+    private void lblLoopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLoopMouseClicked
+       
+        if (Spotify.IS_LOOP) {
+            changeLoopOffIcon();
+            Spotify.IS_LOOP = false;
+        }
+        else {
+            changeLoopOnIcon();
+            Spotify.IS_LOOP = true;
+        }
+    }//GEN-LAST:event_lblLoopMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblArtist;
     private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel lblLoop;
     private javax.swing.JLabel lblNext;
     private javax.swing.JLabel lblPlay;
     private javax.swing.JLabel lblPrevious;
     private javax.swing.JLabel lblShuffle;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JPanel panelControls;
     // End of variables declaration//GEN-END:variables
 
 }

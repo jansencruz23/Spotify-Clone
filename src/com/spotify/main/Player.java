@@ -10,6 +10,7 @@ public class Player {
     
     public void playMusic(Song song) {
         
+        Spotify.PLAYING_SONG = song;
         if (Spotify.IS_PLAYING)
             song.pauseSong();
         else 
@@ -17,6 +18,8 @@ public class Player {
     }
     
     public Song playNext(Playlist playlist, Song song) {
+        
+        Spotify.PLAYING_SONG = song;
         
         if (Spotify.IS_PLAYING)
             song.stopSong();
@@ -33,6 +36,8 @@ public class Player {
     }
     
     public Song playPrevious(Playlist playlist, Song song) {
+        
+        Spotify.PLAYING_SONG = song;
         
         if (Spotify.IS_PLAYING)
             song.stopSong();
@@ -61,6 +66,7 @@ public class Player {
         System.out.println(nextSong.getTitle());
         
         nextSong.playSong();
+        Spotify.PLAYING_SONG = song;
         
         return nextSong;
     }

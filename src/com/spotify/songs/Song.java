@@ -76,6 +76,20 @@ public class Song {
             player = new PausablePlayer(fileInput);
             player.play();
             Spotify.IS_PLAYING = true;
+            Spotify.PLAYING_SONG = this;
+        } 
+        catch (JavaLayerException | FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void loopSong() {
+        
+        try {
+            FileInputStream fileInput = new FileInputStream(file);
+            player = new PausablePlayer(fileInput);
+            player.play();
+            Spotify.IS_PLAYING = true;
         } 
         catch (JavaLayerException | FileNotFoundException ex) {
             ex.printStackTrace();
