@@ -104,9 +104,16 @@ public class PlayerUI extends javax.swing.JPanel {
         
         this.song = song;
         
-        lblTitle.setText(song.getTitle());
-        lblArtist.setText(song.getArtist());
-        lblIcon.setIcon(song.getIcon());
+        if (song == null) {
+            lblTitle.setText("");
+            lblArtist.setText("");
+            lblIcon.setIcon(null);
+        }
+        else {
+            lblTitle.setText(song.getTitle());
+            lblArtist.setText(song.getArtist());
+            lblIcon.setIcon(song.getIcon());
+        }
         
         updateIcons();
     }
@@ -165,7 +172,7 @@ public class PlayerUI extends javax.swing.JPanel {
 
     private void lblNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNextMouseClicked
                       
-        Song nextSong = player.playNext(playlist, song);
+        Song nextSong = player.playNext(Spotify.CURRENT_PLAYLIST, song);
         
         setupPlayer(nextSong);
         changePauseIcon();
@@ -173,7 +180,7 @@ public class PlayerUI extends javax.swing.JPanel {
 
     private void lblPreviousMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPreviousMouseClicked
        
-        Song prevSong = player.playPrevious(playlist, song);
+        Song prevSong = player.playPrevious(Spotify.CURRENT_PLAYLIST, song);
         
         setupPlayer(prevSong);
         changePauseIcon();

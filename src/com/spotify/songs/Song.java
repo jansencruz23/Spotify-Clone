@@ -2,6 +2,7 @@ package com.spotify.songs;
 
 import com.spotify.main.PausablePlayer;
 import com.spotify.main.Spotify;
+import com.spotify.playlists.Playlist;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -77,6 +78,7 @@ public class Song {
             player.play();
             Spotify.IS_PLAYING = true;
             Spotify.PLAYING_SONG = this;
+            //Spotify.PLAYLIST = 
         } 
         catch (JavaLayerException | FileNotFoundException ex) {
             ex.printStackTrace();

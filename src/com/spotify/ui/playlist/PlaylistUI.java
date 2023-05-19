@@ -200,13 +200,14 @@ public class PlaylistUI extends javax.swing.JFrame {
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
         
         this.dispose();
-        PlaylistSerializer playlistz = new PlaylistSerializer();
+        
+        PlaylistSerializer playlists = new PlaylistSerializer();
         PlayerUI player = new PlayerUI();
         player.setupPlayer(Spotify.PLAYING_SONG);
         
-        new SpotifyUI(playlistz, player).setVisible(true);
+        new SpotifyUI(playlists, player).setVisible(true);
     }//GEN-LAST:event_lblBackMouseClicked
-
+    
     private void displayPlaylistInfo() {
         
         lblIcon.setIcon(playlist.getIcon());
@@ -234,7 +235,10 @@ public class PlaylistUI extends javax.swing.JFrame {
         });
     }
     
-    
+    public void songClicked(PlaylistUI playlistUi) {
+        
+        Spotify.CURRENT_PLAYLIST = playlist;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel3;

@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/ui/playlist/PlaylistUI.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/ui/auth/LoginUI.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/ui/main/PlayerUI.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/songs/Song.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/main/Player.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/playlists/PlaylistSerializer.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/ui/song/SongUI.java</file>
-            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/ui/auth/RegisterUI.java</file>
+            <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2005%20-%20MAY/Java%20Ant/Spotify/src/com/spotify/ui/main/SpotifyUI.java</file>
         </group>
     </open-files>
 </project-private>

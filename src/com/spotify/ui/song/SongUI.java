@@ -1,8 +1,11 @@
 package com.spotify.ui.song;
 
 import com.spotify.fonts.Fonts;
+import com.spotify.main.Spotify;
 import com.spotify.songs.Song;
 import com.spotify.ui.main.PlayerUI;
+import com.spotify.ui.playlist.PlaylistUI;
+import java.awt.Container;
 
 public class SongUI extends javax.swing.JPanel {
 
@@ -83,7 +86,23 @@ public class SongUI extends javax.swing.JPanel {
         return song;
     }
     
+    public PlaylistUI getPlaylistUI() {
+        
+        Container parent = getParent();
+        while (parent != null) {
+            if (parent instanceof PlaylistUI) 
+                return (PlaylistUI) parent;
+            parent = parent.getParent();
+        }
+        
+        return null;
+    }
+    
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        
+        PlaylistUI playlistUi = getPlaylistUI();
+        if (playlistUi != null) 
+            playlistUi.songClicked(playlistUi);
         
         song.playSong();
         player.changePauseIcon();
